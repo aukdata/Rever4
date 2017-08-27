@@ -19,7 +19,7 @@ class AI {
 			candidates.sort(function(a, b) {
 				if( a.obtainable > b.obtainable ) return -1;
 				if( a.obtainable < b.obtainable ) return 1;
-					return 0;
+				return 0;
 			});
 
 			const r = Math.random();

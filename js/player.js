@@ -5,7 +5,7 @@ class Player {
 		this._mydisk = mydisk;
 		this._ai = new AI(mydisk);
 
-		document.getElementById("board").addEventListener("click", this.onClick.bind(this), false);
+		document.getElementById("board").addEventListener("click", this.onClick.bind(this));
 	}
 
 	place() {

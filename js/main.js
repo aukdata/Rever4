@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(e) {
+let loaded = function() {
 	let players = new Array(4);
 	for(let i=0; i < 4; ++i) {
 		players[i] = new Player(i + 1);
@@ -20,4 +20,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
 	}
 
 	next();
-});
+}
+
+document.addEventListener("DOMContentLoaded", loaded);

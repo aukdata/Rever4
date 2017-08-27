@@ -5,20 +5,9 @@ const SQUARE_SIZE = BOARD_SIZE / SQUARE_COUNT;
 class Board {
 	constructor() {
 		this._ctx = null;
-
-		this._squares = new Array(SQUARE_COUNT);
-		for(let y = 0 ; y < SQUARE_COUNT ; ++y) {
-			this._squares[y] = new Array(SQUARE_COUNT);
-			for(let x = 0 ; x < SQUARE_COUNT ; ++x) {
-				this._squares[y][x] = DISK_NULL;
-			}
-		}
-
-		const half = Math.floor(SQUARE_COUNT / 2);
-		this._squares[half - 1][half - 1] = DISK_RED;
-		this._squares[half][half - 1] = DISK_BLUE;
-		this._squares[half - 1][half] = DISK_YELLOW;
-		this._squares[half][half] = DISK_GREEN;
+		this._wins = false;
+		this._sorted = false;
+		this._squares = new Array(SQUARE_COUNT * SQUARE_COUNT);
 
 		const that = this;
 		document.addEventListener("DOMContentLoaded", function(e) {
@@ -26,8 +15,27 @@ class Board {
 			canvas.width = 700;
 			canvas.height = 700;
 			that._ctx = canvas.getContext("2d");
-			that.update();
+			that.reset();
+
+			canvas.addEventListener("click", that.onClick.bind(that));
 		});
+	}
+
+	reset() {
+		this._wins = false;
+		this._sorted = false;
+
+		for(let i = 0 ; i < SQUARE_COUNT * SQUARE_COUNT ; ++i) {
+			this._squares[i] = DISK_NULL;
+		}
+
+		const half = Math.floor(SQUARE_COUNT / 2);
+		this.set(half - 1, half - 1, DISK_RED);
+		this.set(half, half - 1, DISK_BLUE);
+		this.set(half - 1, half, DISK_YELLOW);
+		this.set(half, half, DISK_GREEN);
+
+		this.update();
 	}
 
 	update() {
@@ -38,6 +46,10 @@ class Board {
 			for(let y = 0 ; y < SQUARE_COUNT ; ++y) {
 				++counter[this.get(x, y)];
 			}
+		}
+
+		if(counter[DISK_NULL] <= 0) {
+			this._wins = true;
 		}
 
 		for(let o of disks) {
@@ -56,7 +68,7 @@ class Board {
 				this._ctx.fillStyle = "#EAEAEA";
 				this._ctx.fillRect(x * SQUARE_SIZE + 1, y * SQUARE_SIZE + 1, SQUARE_SIZE - 2, SQUARE_SIZE - 2);
 
-				const state = this._squares[y][x];
+				const state = this.get(x, y);
 				this._ctx.fillStyle = disks[state].color;
 				this._ctx.beginPath();
 				this._ctx.arc(x * SQUARE_SIZE + SQUARE_SIZE / 2, y * SQUARE_SIZE + SQUARE_SIZE / 2 , SQUARE_SIZE / 2 - SQUARE_SIZE / 10, 0, Math.PI * 2, true);
@@ -67,12 +79,12 @@ class Board {
 
 	set(x, y, state) {
 		if(0 <= x && x < SQUARE_COUNT && 0 <= y && y < SQUARE_COUNT) {
-			board._squares[y][x] = state;
+			this._squares[y * SQUARE_COUNT + x] = state;
 		}
  	}
 	get(x, y) {
 		if(0 <= x && x < SQUARE_COUNT && 0 <= y && y < SQUARE_COUNT) {
-			return board._squares[y][x];
+			return this._squares[y * SQUARE_COUNT + x];
 		}else{
 			return DISK_NULL;
 		}
@@ -163,6 +175,36 @@ class Board {
 			}
 		}
 		return counter;
+	}
+
+	onClick(e) {
+		if(this._sorted) {
+			this.reset();
+			loaded();
+			log("Reset");
+		}else if(this._wins) {
+			this._sorted = true;
+
+			let counter = [0, 0, 0, 0, 0];
+			for(let x = 0 ; x < SQUARE_COUNT ; ++x) {
+				for(let y = 0 ; y < SQUARE_COUNT ; ++y) {
+					++counter[this.get(x, y)];
+				}
+			}
+
+			this._squares.sort(function(a, b) {
+				if( a > b ) return -1;
+				if( a < b ) return 1;
+				return 0;
+			});
+			this._squares.sort(function(a, b) {
+				if( counter[a] > counter[b] ) return -1;
+				if( counter[a] < counter[b] ) return 1;
+				return 0;
+			});
+
+			this.render();
+		}
 	}
 }
 
