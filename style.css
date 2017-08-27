@@ -55,8 +55,11 @@ div.module {
 	vertical-align: middle;
 }
 
+.disk{
+	font-size: 1.5rem;
+}
 .turn_cursor {
-	font-size: large;
+	font-size: 1.5rem;
 	color: white;
 }
 #red_turn_cursor {

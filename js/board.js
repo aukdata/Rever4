@@ -16,7 +16,7 @@ class Board {
 
 		const half = Math.floor(SQUARE_COUNT / 2);
 		this._squares[half - 1][half - 1] = DISK_RED;
-		this._squares[half][half - 1] = DISK_WHITE;
+		this._squares[half][half - 1] = DISK_BLUE;
 		this._squares[half - 1][half] = DISK_YELLOW;
 		this._squares[half][half] = DISK_GREEN;
 
@@ -48,13 +48,13 @@ class Board {
 	render() {
 		this._ctx.clearRect(0, 0, BOARD_SIZE, BOARD_SIZE);
 
-		this._ctx.fillStyle = "black";
+		this._ctx.fillStyle = "white";
 		this._ctx.fillRect(0, 0, BOARD_SIZE, BOARD_SIZE);
 
 		for(let x = 0 ; x < SQUARE_COUNT ; ++x) {
 			for(let y = 0 ; y < SQUARE_COUNT ; ++y) {
-				this._ctx.fillStyle = "green";
-				this._ctx.fillRect(x * SQUARE_SIZE + 1, y * SQUARE_SIZE + 1, SQUARE_SIZE - 1, SQUARE_SIZE - 1);
+				this._ctx.fillStyle = "#EAEAEA";
+				this._ctx.fillRect(x * SQUARE_SIZE + 1, y * SQUARE_SIZE + 1, SQUARE_SIZE - 2, SQUARE_SIZE - 2);
 
 				const state = this._squares[y][x];
 				this._ctx.fillStyle = disks[state].color;
@@ -157,7 +157,9 @@ class Board {
 		let counter = 0;
 		for(let x = 0 ; x < SQUARE_COUNT ; ++x) {
 			for(let y = 0 ; y < SQUARE_COUNT ; ++y) {
-				++counter;
+				if(this.get(x, y) === state) {
+					++counter;
+				}
 			}
 		}
 		return counter;

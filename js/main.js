@@ -11,7 +11,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
 			$(".turn_cursor").css("color", "white");
 			$("#" + players[turn % 4].getColor() + "_turn_cursor").css("color", "darkred");
 		}
-		setTimeout(next, 100);
+
+		if(board.getNumber(DISK_NULL) > 0) {
+			setTimeout(next, 100);
+		}else{
+			$(".turn_cursor").css("color", "white");
+		}
 	}
 
 	next();

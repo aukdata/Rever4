@@ -5,19 +5,19 @@ input.toggle {
 	-ms-appearance: none;
 	-moz-appearance: none;
 	margin: 10px;
-	
+
 	width: 80px;
 	height: 25px;
 
 	border: 0px solid rgba(0,0,0,0.0);
 	border-radius: 50px;
-	background-color: lightgray;
+	background-color: #EAEAEA;
 
 	transition: background-color .4s ease;
 }
 
 input.toggle:checked {
-	background-color: gray;
+	background-color: lightgray;
 }
 
 input.toggle + label {
@@ -49,6 +49,6 @@ input.toggle:checked + label {
     border: 0px solid rgba(0,0,0,0.0);
     border-radius: 50%;
 
-    background-color: forestgreen;
+    background-color: lightblue;
     box-shadow: 0 0 4px rgba(0,0,0,0.4);
 }

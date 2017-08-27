@@ -16,7 +16,16 @@ class AI {
 		}
 
 		if(candidates.length > 0) {
-			const candidate = candidates[Math.floor(Math.random() * candidates.length)];
+			candidates.sort(function(a, b) {
+				if( a.obtainable > b.obtainable ) return -1;
+				if( a.obtainable < b.obtainable ) return 1;
+					return 0;
+			});
+
+			const r = Math.random();
+			const p = Math.pow(r, 16);
+
+			const candidate = candidates[Math.floor(p * candidates.length)];
 			board.place(candidate.x, candidate.y, this._disk);
 		}
 		return true;
