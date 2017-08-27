@@ -1,4 +1,4 @@
-const SQUARE_COUNT = 8;
+const SQUARE_COUNT = 16;
 const BOARD_SIZE = 700;
 const SQUARE_SIZE = BOARD_SIZE / SQUARE_COUNT;
 
@@ -56,7 +56,7 @@ class Board {
 				this._ctx.fillStyle = "green";
 				this._ctx.fillRect(x * SQUARE_SIZE + 1, y * SQUARE_SIZE + 1, SQUARE_SIZE - 1, SQUARE_SIZE - 1);
 
-				let state = this._squares[y][x];
+				const state = this._squares[y][x];
 				this._ctx.fillStyle = disks[state].color;
 				this._ctx.beginPath();
 				this._ctx.arc(x * SQUARE_SIZE + SQUARE_SIZE / 2, y * SQUARE_SIZE + SQUARE_SIZE / 2 , SQUARE_SIZE / 2 - SQUARE_SIZE / 10, 0, Math.PI * 2, true);
@@ -79,7 +79,7 @@ class Board {
 	}
 
 	place(x, y, state) {
-		if(this.get(x, y) != DISK_NULL) return false;
+		if(this.get(x, y) !== DISK_NULL) return false;
 
 		this.set(x, y, state);
 
@@ -91,8 +91,8 @@ class Board {
 				cpos = shift(cpos.x, cpos.y, i);
 				const cstate = this.get(cpos.x, cpos.y);
 
-				if(cstate == state) break;
-				if(cstate == DISK_NULL) {
+				if(cstate === state) break;
+				if(cstate === DISK_NULL) {
 					count = 0;
 					break;
 				}
@@ -113,9 +113,9 @@ class Board {
 	}
 
 	getObtainableCount(x, y, state) {
-		if(this.get(x, y) != DISK_NULL) return 0;
+		if(this.get(x, y) !== DISK_NULL) return 0;
 
-		let maxcount = 0;
+		let totalCount = 0;
 
 		for(let i = 0 ; i < 8 ; ++i) {
 			let count = 0;
@@ -125,20 +125,32 @@ class Board {
 				cpos = shift(cpos.x, cpos.y, i);
 				const cstate = this.get(cpos.x, cpos.y);
 
-				if(cstate == state) break;
-				if(cstate == DISK_NULL) {
+				if(cstate === state) break;
+				if(cstate === DISK_NULL) {
 					count = 0;
 					break;
 				}
 				++count;
 			}
-			maxcount += count;
+			totalCount += count;
 		}
-		return maxcount;
+		return totalCount;
 	}
 
 	canPlace(x, y, state) {
-		return true;//this.getMaxObtainableCount(x, y, state) > 0;
+		if(this.get(x, y) !== DISK_NULL) {
+			return false;
+		}
+
+		for(let i = 0 ; i < 8 ; ++i) {
+			let cpos = {x: x, y: y};
+
+			cpos = shift(cpos.x, cpos.y, i);
+			if(this.get(cpos.x, cpos.y) !== DISK_NULL) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	getNumber(state) {
@@ -152,4 +164,4 @@ class Board {
 	}
 }
 
-let board = new Board();
+const board = new Board();

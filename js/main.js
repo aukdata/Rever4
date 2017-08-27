@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
 	const next = function() {
 		if(players[turn % 4].place()) {
 			++turn;
-			$("#turn").text("Turn : " + players[turn % 4].getColor());
+			$(".turn_cursor").css("color", "white");
+			$("#" + players[turn % 4].getColor() + "_turn_cursor").css("color", "darkred");
 		}
 		setTimeout(next, 100);
 	}

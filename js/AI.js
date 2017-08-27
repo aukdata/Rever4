@@ -9,7 +9,7 @@ class AI {
 		for(let x = 0 ; x < SQUARE_COUNT ; ++x) {
 			for(let y = 0 ; y < SQUARE_COUNT ; ++y) {
 				const obtainable = board.getObtainableCount(x, y, this._disk);
-				if(obtainable > 0) {
+				if(board.canPlace(x, y, this._disk)) {
 					candidates.push({x: x, y: y, obtainable: obtainable});
 				}
 			}
@@ -18,8 +18,6 @@ class AI {
 		if(candidates.length > 0) {
 			const candidate = candidates[Math.floor(Math.random() * candidates.length)];
 			board.place(candidate.x, candidate.y, this._disk);
-		}else{
-			board.place(Math.floor(Math.random() * SQUARE_COUNT), Math.floor(Math.random() * SQUARE_COUNT), this._disk);
 		}
 		return true;
 	}

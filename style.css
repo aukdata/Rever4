@@ -55,6 +55,14 @@ div.module {
 	vertical-align: middle;
 }
 
+.turn_cursor {
+	font-size: large;
+	color: white;
+}
+#red_turn_cursor {
+	color: darkred;
+}
+
 @media screen and (min-width: 979px) {
 }
 @media screen and (max-width: 978px) {
