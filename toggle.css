@@ -1,0 +1,54 @@
+
+input.toggle {
+	appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	margin: 10px;
+	
+	width: 80px;
+	height: 25px;
+
+	border: 0px solid rgba(0,0,0,0.0);
+	border-radius: 50px;
+	background-color: lightgray;
+
+	transition: background-color .4s ease;
+}
+
+input.toggle:checked {
+	background-color: gray;
+}
+
+input.toggle + label {
+    position: relative;
+    display: inline-block;
+    top: -5px;
+    left: -90px;
+    width: 35px;
+    height: 35px;
+
+    border: 0px solid rgba(0,0,0,0.0);
+    border-radius: 50%;
+
+    background-color: white;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+
+    transition: left .4s ease, background-color .4s ease;
+}
+
+input.toggle:checked + label {
+    position: relative;
+    display: inline-block;
+    top: -5px;
+    left: -45px;
+
+    width: 35px;
+    height: 35px;
+
+    border: 0px solid rgba(0,0,0,0.0);
+    border-radius: 50%;
+
+    background-color: forestgreen;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}

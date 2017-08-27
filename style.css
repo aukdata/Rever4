@@ -1,0 +1,61 @@
+
+* {
+	user-select: none;
+}
+
+body {
+	background-color: lightgray;
+}
+
+div.module {
+	background-color: white;
+	margin: 5px;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#counter {
+	text-align: center;
+	vertical-align: middle;
+}
+
+#board {
+	background-color: black;
+
+	width: 700px;
+	height: 700px;
+}
+
+
+#contents {
+	margin: auto;
+
+	width: 910px;
+	height: 700px;
+}
+#board_module {
+	float: left;
+
+	width: 700px;
+	height: 700px;
+}
+#control_module {
+	float: right;
+
+	width: 150px;
+}
+#counter_module {
+	float: right;
+
+	width: 150px;
+}
+
+#turn {
+	text-align: center;
+	vertical-align: middle;
+}
+
+@media screen and (min-width: 979px) {
+}
+@media screen and (max-width: 978px) {
+}

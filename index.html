@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Auto Reversi</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width,user-scalable=yes,maximum-scale=2"/>
+
+	<link type="text/css" rel="stylesheet" href="style.css">
+	<link type="text/css" rel="stylesheet" href="toggle.css">
+
+	<script>
+		const log = console.log;
+	</script>
+
+	<script type="text/javascript" src="./lib/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="./js/directions.js"></script>
+	<script type="text/javascript" src="./js/disks.js"></script>
+	<script type="text/javascript" src="./js/board.js"></script>
+	<script type="text/javascript" src="./js/AI.js"></script>
+	<script type="text/javascript" src="./js/player.js"></script>
+	<script type="text/javascript" src="./js/main.js"></script>
+</head>
+
+<body>
+	<div id="contents">
+
+		<div class="module" id="board_module">
+			<canvas id="board"></canvas>
+		</div>
+
+		<div class="module" id="control_module">
+			<div id="ai_toggles">
+				<p><span style="color:red">●</span> Auto</p><input type="checkbox" class="toggle" id="red_ai_toggle"/><label for="red_ai_toggle"></label>
+				<p>○ Auto</p><input type="checkbox" class="toggle" id="white_ai_toggle"/><label for="white_ai_toggle"></label>
+				<p><span style="color:yellow">●</span> Auto</p><input type="checkbox" class="toggle" id="yellow_ai_toggle"/><label for="yellow_ai_toggle"></label>
+				<p><span style="color:lime">●</span> Auto</p><input type="checkbox" class="toggle" id="green_ai_toggle"/><label for="green_ai_toggle"></label>
+			</div>
+		</div>
+
+		<div class="module" id="counter_module">
+			<p id="counter">
+				<span style="color:red">●</span>x<span id="red_counter">0</span><br/>
+				○x<span id="white_counter">0</span><br/>
+				<span style="color:yellow">●</span>x<span id="yellow_counter">0</span><br/>
+				<span style="color:lime">●</span>x<span id="green_counter">0</span></p>
+			<p id="turn">Turn : red</p>
+		</div>
+
+	</div>
+</body>
+
+</html>
