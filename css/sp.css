@@ -1,0 +1,65 @@
+
+* {
+	user-select: none;
+}
+
+body {
+	background-color: lightgray;
+}
+
+div.module {
+	background-color: white;
+	margin: 5px;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#contents {
+	margin: auto;
+
+	width: 910px;
+	height: 700px;
+}
+
+#board_module {
+	width: 100%;
+	height: auto;
+}
+#board {
+	background-color: black;
+
+	width: 100%;
+	height: 100%;
+}
+
+#control_module {
+	float: left;
+}
+.ai_toggle {
+	display: inline-block;
+}
+
+#counter_module {
+	float: left;
+	width: 150px;
+}
+#counter {
+	text-align: center;
+	vertical-align: middle;
+}
+
+#turn {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.disk{
+	font-size: 1.5rem;
+}
+.turn_cursor {
+	font-size: 1.5rem;
+	color: white;
+}
+#red_turn_cursor {
+	color: darkred;
+}

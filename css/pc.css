@@ -14,11 +14,18 @@ div.module {
 	border-radius: 5px;
 }
 
-#counter {
-	text-align: center;
-	vertical-align: middle;
+#contents {
+	margin: auto;
+
+	width: 910px;
+	height: 700px;
 }
 
+#board_module {
+	float: left;
+	width: 700px;
+	height: 700px;
+}
 #board {
 	background-color: black;
 
@@ -26,28 +33,13 @@ div.module {
 	height: 700px;
 }
 
-
-#contents {
-	margin: auto;
-
-	width: 910px;
-	height: 700px;
-}
-#board_module {
-	float: left;
-
-	width: 700px;
-	height: 700px;
-}
-#control_module {
+#control_module, #counter_module {
 	float: right;
-
 	width: 150px;
 }
-#counter_module {
-	float: right;
-
-	width: 150px;
+#counter {
+	text-align: center;
+	vertical-align: middle;
 }
 
 #turn {
@@ -66,7 +58,10 @@ div.module {
 	color: darkred;
 }
 
+/* PC Tablet */
 @media screen and (min-width: 979px) {
 }
+
+/* Phone */
 @media screen and (max-width: 978px) {
 }

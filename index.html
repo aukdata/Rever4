@@ -5,10 +5,11 @@
 	<title>Rever4</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width,user-scalable=yes,maximum-scale=2"/>
+	<meta name="viewport" content="width=978, initial-scale=1"/>
 
-	<link type="text/css" rel="stylesheet" href="style.css">
-	<link type="text/css" rel="stylesheet" href="toggle.css">
+	<link type="text/css" rel="stylesheet" href="./css/toggle.css">
+	<link type="text/css" rel="stylesheet" media="screen and (min-width: 979px)" href="./css/pc.css">
+	<link type="text/css" rel="stylesheet" media="screen and (max-width: 978px)" href="./css/sp.css">
 
 	<script>
 		const log = console.log;
@@ -30,22 +31,22 @@
 			<canvas id="board"></canvas>
 		</div>
 
-		<div class="module" id="control_module">
-			<div id="ai_toggles">
-				<p><span class="red_disk disk">●</span> Auto</p><input type="checkbox" class="toggle" id="red_ai_toggle"/><label for="red_ai_toggle"></label>
-				<p><span class="blue_disk disk">●</span> Auto</p><input type="checkbox" class="toggle" id="blue_ai_toggle"/><label for="blue_ai_toggle"></label>
-				<p><span class="yellow_disk disk">●</span> Auto</p><input type="checkbox" class="toggle" id="yellow_ai_toggle"/><label for="yellow_ai_toggle"></label>
-				<p><span class="green_disk disk">●</span> Auto</p><input type="checkbox" class="toggle" id="green_ai_toggle"/><label for="green_ai_toggle"></label>
+		<div id="operator">
+			<div class="module" id="control_module">
+				<div class="ai_toggle"><p><span class="red_disk disk">●</span> Auto</p><input type="checkbox" class="toggle" id="red_ai_toggle"/><label for="red_ai_toggle"></label></div>
+				<div class="ai_toggle"><p><span class="blue_disk disk">●</span> Auto</p><input type="checkbox" class="toggle" id="blue_ai_toggle"/><label for="blue_ai_toggle"></label></div>
+				<div class="ai_toggle"><p><span class="yellow_disk disk">●</span> Auto</p><input type="checkbox" class="toggle" id="yellow_ai_toggle"/><label for="yellow_ai_toggle"></label></div>
+				<div class="ai_toggle"><p><span class="green_disk disk">●</span> Auto</p><input type="checkbox" class="toggle" id="green_ai_toggle"/><label for="green_ai_toggle"></label></div>
 			</div>
-		</div>
 
-		<div class="module" id="counter_module">
-			<p id="counter">
-				<span class="turn_cursor" id="red_turn_cursor">&rtrif; </span><span class="red_disk disk">●</span> x<span id="red_counter">0</span> <br/>
-				<span class="turn_cursor" id="blue_turn_cursor">&rtrif; </span><span class="blue_disk disk">●</span> x<span id="blue_counter">0</span> <br/>
-				<span class="turn_cursor" id="yellow_turn_cursor">&rtrif; </span><span class="yellow_disk disk">●</span> x<span id="yellow_counter">0</span> <br/>
-				<span class="turn_cursor" id="green_turn_cursor">&rtrif; </span><span class="green_disk disk">●</span> x<span id="green_counter">0</span>
-			</p>
+			<div class="module" id="counter_module">
+				<p id="counter">
+					<span class="turn_cursor" id="red_turn_cursor">&rtrif; </span><span class="red_disk disk">●</span> x<span id="red_counter">0</span> <br/>
+					<span class="turn_cursor" id="blue_turn_cursor">&rtrif; </span><span class="blue_disk disk">●</span> x<span id="blue_counter">0</span> <br/>
+					<span class="turn_cursor" id="yellow_turn_cursor">&rtrif; </span><span class="yellow_disk disk">●</span> x<span id="yellow_counter">0</span> <br/>
+					<span class="turn_cursor" id="green_turn_cursor">&rtrif; </span><span class="green_disk disk">●</span> x<span id="green_counter">0</span>
+				</p>
+			</div>
 		</div>
 
 	</div>
