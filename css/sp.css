@@ -22,7 +22,9 @@ div.module {
 }
 
 #board_module {
-	width: 100%;
+	margin: auto;
+
+	width: 90%;
 	height: auto;
 }
 #board {
@@ -32,6 +34,10 @@ div.module {
 	height: 100%;
 }
 
+#operator {
+	margin: auto;
+	width: 90%;
+}
 #control_module {
 	float: left;
 }

@@ -57,11 +57,3 @@ div.module {
 #red_turn_cursor {
 	color: darkred;
 }
-
-/* PC Tablet */
-@media screen and (min-width: 979px) {
-}
-
-/* Phone */
-@media screen and (max-width: 978px) {
-}
